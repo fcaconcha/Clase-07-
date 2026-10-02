@@ -1,0 +1,257 @@
+
+            /* Variables globales: si cambias algo aquí, cambia en todos los lugares donde se use esa variable */
+            :root {
+                /* Formas de definir colores (Hexadecimal, HSL, RGB, RGBA con A de Alpha, Nombrándolo) */
+                --color-bg: #eaeaea;
+                --color-bg-nota: hsl(30, 5%, 85%);
+                --color-text: rgb(60, 60, 60);
+                --color-text-dark: rgb(30, 30, 30);
+                --color-text-light: rgba(90, 90, 90, 1);
+                --color-border: silver;
+                /* Tipografías: si la primera opción no existe, pasa a la siguiente */
+                --font-sans: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+                --font-serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+            }
+
+            /* Se resetean TODOS los elementos (y sus pseudoelementos antes/después) para reiniciar márgenes y controlar el tamaño real de las cajas */
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            /* Base general de lo que se ve en el cuerpo de la página */
+            body {
+                font-family: var(--font-serif);
+                color: var(--color-text);
+                background: var(--color-bg);
+                margin: 0 auto;
+                padding: 1.5rem;
+                line-height: 1.6;
+                font-size: 1.2rem;
+            }
+
+            /* a de anchor: Enlaces (links) */
+            a {
+                color: var(--color-text-dark);
+                text-decoration: underline;
+                text-decoration-style: dotted;
+                text-underline-offset: 3px;
+                transition: all ease 0.5s;
+            }
+
+            /* Efecto al pasar el mouse sobre un enlace */
+            a:hover {
+                text-decoration-style: solid;
+            }
+
+
+            /* p (de párrafo) */
+            p {
+                margin-bottom: 1rem;
+            }
+
+            /* em (de emphasis) da énfasis semántico a una palabra/frase; por defecto, el navegador lo muestra en cursiva */
+            em {
+                font-weight: 500;
+            }
+
+            /* abbr (de abbreviation): siglas o abreviaturas; el atributo title muestra su significado al pasar el mouse */
+            abbr {
+                font-size: 0.85em; /* un poco más chica que el texto, como hacía <small> */
+                text-decoration: none; /* el navegador la subraya punteada; la quitamos para no confundirla con los enlaces */
+                cursor: help; /* el cursor avisa que hay una explicación disponible */
+            }
+
+            /* Listas desordenadas (las que llevan viñetas o "puntos", no números) */
+            ul {
+                list-style-position: inside;
+            }
+            ul li {
+                margin-bottom: 0.5rem;
+            }
+
+            /* Contenedor principal: centra el contenido y le pone un ancho máximo para mantener un ancho de línea legible */
+            .container {
+                margin: 0 auto;
+                width: 90%;
+                max-width: 700px;
+            }
+
+            /* Títulos principales (del h1 al h6, no existen otros niveles) */
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                font-family: var(--font-sans);
+                line-height: 1.2;
+            }
+
+            h1,
+            h2,
+            h3,
+            h4 {
+                font-weight: 700;
+            }
+
+            h5,
+            h6 {
+                font-weight: 400;
+                text-align: center;
+                color: var(--color-text-light);
+            }
+
+            h1 {
+                font-size: calc(1.5rem + 2vw);
+                text-align: center;
+                margin-top: 10vh;
+            }
+            h2 {
+                font-size: calc(1.5rem + 1.5vw);
+                text-align: center;
+                margin-bottom: 5vh;
+            }
+            h3 {
+                font-size: 1.2rem;
+                margin: 2rem 0 0.5rem 0;
+            }
+
+            /* Icono de maleta solo en el ÚLTIMO <h3> dentro de su contenedor (:last-of-type cuenta hermanos del mismo tag) */
+            h3:last-of-type {
+                text-indent: 1.5rem;
+                background-image:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-laughing" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/><path d="M12.331 9.5a1 1 0 0 1 0 1A5 5 0 0 1 8 13a5 5 0 0 1-4.33-2.5A1 1 0 0 1 4.535 9h6.93a1 1 0 0 1 .866.5M7 6.5c0 .828-.448 0-1 0s-1 .828-1 0S5.448 5 6 5s1 .672 1 1.5m4 0c0 .828-.448 0-1 0s-1 .828-1 0S9.448 5 10 5s1 .672 1 1.5"/></svg>');
+                background-repeat: no-repeat;
+                background-size: 1rem 1rem;
+            }
+
+            h4 {
+                font-size: 1.1rem;
+                margin-top: 1.5rem;
+            }
+
+            /* Icono de trofeo solo en el ÚLTIMO <h4> dentro de su contenedor */
+            h4:last-of-type {
+                text-indent: 1.5rem;
+                background-image:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-rocket-takeoff" viewBox="0 0 16 16"><path d="M9.752 6.193c.599.6 1.73.437 2.528-.362s.96-1.932.362-2.531c-.599-.6-1.73-.438-2.528.361-.798.8-.96 1.933-.362 2.532"/><path d="M15.811 3.312c-.363 1.534-1.334 3.626-3.64 6.218l-.24 2.408a2.56 2.56 0 0 1-.732 1.526L8.817 15.85a.51.51 0 0 1-.867-.434l.27-1.899c.04-.28-.013-.593-.131-.956a9 9 0 0 0-.249-.657l-.082-.202c-.815-.197-1.578-.662-2.191-1.277-.614-.615-1.079-1.379-1.275-2.195l-.203-.083a10 10 0 0 0-.655-.248c-.363-.119-.675-.172-.955-.132l-1.896.27A.51.51 0 0 1 .15 7.17l2.382-2.386c.41-.41.947-.67 1.524-.734h.006l2.4-.238C9.005 1.55 11.087.582 12.623.208c.89-.217 1.59-.232 2.08-.188.244.023.435.06.57.093q.1.026.16.045c.184.06.279.13.351.295l.029.073a3.5 3.5 0 0 1 .157.721c.055.485.051 1.178-.159 2.065m-4.828 7.475.04-.04-.107 1.081a1.54 1.54 0 0 1-.44.913l-1.298 1.3.054-.38c.072-.506-.034-.993-.172-1.418a9 9 0 0 0-.164-.45c.738-.065 1.462-.38 2.087-1.006M5.205 5c-.625.626-.94 1.351-1.004 2.09a9 9 0 0 0-.45-.164c-.424-.138-.91-.244-1.416-.172l-.38.054 1.3-1.3c.245-.246.566-.401.91-.44l1.08-.107zm9.406-3.961c-.38-.034-.967-.027-1.746.163-1.558.38-3.917 1.496-6.937 4.521-.62.62-.799 1.34-.687 2.051.107.676.483 1.362 1.048 1.928.564.565 1.25.941 1.924 1.049.71.112 1.429-.067 2.048-.688 3.079-3.083 4.192-5.444 4.556-6.987.183-.771.18-1.345.138-1.713a3 3 0 0 0-.045-.283 3 3 0 0 0-.3-.041Z"/><path d="M7.009 12.139a7.6 7.6 0 0 1-1.804-1.352A7.6 7.6 0 0 1 3.794 8.86c-1.102.992-1.965 5.054-1.839 5.18.125.126 3.936-.896 5.054-1.902Z"/></svg>');
+                background-repeat: no-repeat;
+                background-size: 0.9rem;
+                background-position: 0rem 0.15rem;
+            }
+
+            h5 {
+                font-size: 0.9rem;
+                margin-bottom: 0.5rem;
+            }
+
+            h5 a {
+                font-weight: 600;
+                color: var(--color-text-dark);
+                text-decoration: none;
+            }
+
+            h5 a:hover {
+                text-decoration: underline;
+                text-decoration-style: dotted;
+            }
+
+            h6 {
+                font-size: 0.8rem;
+                margin-bottom: 3rem;
+            }
+
+            /* Estilos de tablas de datos */
+            table {
+                border-collapse: collapse;
+                width: calc(100% + 1.5rem);
+                margin: 0 -0.75rem 2.5rem -0.75rem;
+                font-family: var(--font-sans);
+                font-size: 85%;
+                font-weight: 300;
+            }
+
+            tr,
+            tr:hover {
+                transition: background ease 0.4s;
+            }
+
+            /* Cambia el fondo de la fila cuando el usuario pasa el mouse por encima */
+            tbody tr:hover {
+                background: rgba(255, 255, 255, 0.5);
+            }
+
+            th {
+                text-align: left;
+                font-family: var(--font-sans);
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                font-size: 90%;
+            }
+
+            th,
+            td {
+                border-bottom: 1px solid var(--color-border);
+                padding: 0.4rem 0.8rem;
+            }
+
+            /* Centra solo la primera columna en todas las tablas, EXCEPTO en la última tabla de la página */
+            table:not(:last-of-type) th:nth-child(1),
+            table:not(:last-of-type) td:nth-child(1) {
+                text-align: center;
+                padding: 0.4rem 0.2rem;
+            }
+
+            /* Le pone un borde superior únicamente a la última tabla de la página */
+            table:last-of-type {
+                border-top: 1px solid var(--color-border);
+            }
+
+            td span {
+                font-size: 90%;
+                color: rgba(0, 0, 0, 0.5);
+            }
+
+            /* Cuadro destacado para una nota importante */
+            .nota {
+                background: var(--color-bg-nota);
+                border-left: 3px solid var(--color-border);
+                padding: 0.7rem 0.5rem;
+                padding-left: 0.75rem;
+                font-size: 0.95rem;
+                margin: 2rem -0.5rem;
+                line-height: 1.3;
+            }
+
+            .nota span {
+                font-weight: 700;
+            }
+
+            /* Lista de descripción (<dl>), usada frecuentemente para glosarios, fuentes o metadatos */
+            dl {
+                font-family: var(--font-sans);
+                font-size: 80%;
+                letter-spacing: 0.025rem;
+                margin-bottom: 10vh;
+            }
+
+            /* Término o título de la descripción (<dt>) */
+            dl dt {
+                font-weight: 700;
+            }
+
+            /* Definición o detalle de la descripción (<dd>) */
+            dl dd {
+                font-size: 90%;
+                color: var(--color-text-light);
+                margin-top: 0.25rem;
+            }
+
+            dl dd em{
+                font-style: normal;
+                font-weight: 700;
+                color: var(--color-text-light);
+            }
+  
